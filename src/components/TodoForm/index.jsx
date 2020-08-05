@@ -1,5 +1,7 @@
 import React from "react";
 import {postTodo,getTodo} from '../../api'
+import {Input ,Button,Space} from 'antd'
+import './index.css'
 class TodoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -31,9 +33,10 @@ class TodoForm extends React.Component {
     }
     render() {
         return (
-            <form>
-                <input type="text" onChange={this.onChange}/>
-                <input type="button" onClick={this.onSubmit} value="提交TODO"/>
+            <form id="form">
+
+                <Input type="text" placeholder="todo~~" onChange={this.onChange}/>
+                <Button type="primary" shape="round" onClick={this.onSubmit}>提交TODO</Button>
             </form>
         )
     }

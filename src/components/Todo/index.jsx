@@ -1,7 +1,8 @@
 import React from 'react';
 import './todo.css'
 import { getTodo,delTodo,updateTodo} from '../../api'
-
+import { Card, Space,Col } from 'antd';
+import {CloseOutlined} from '@ant-design/icons';
 
 
 class Todo extends React.Component {
@@ -23,9 +24,12 @@ class Todo extends React.Component {
     }
     render(){
         return (
-            <div className="outerTodo" onClick={this.changeDone}>
-                <div className="everyTodo"><span className={this.props.todo.status ? "isdone" : "notdone"}>{this.props.todo.content}</span><span className="rightTodo" onClick={this.delete}><img src="/delete.png" alt="x" /></span></div>
-            </div>
+            <Col span={8}>
+            <Card  onClick={this.changeDone} title="Card title" hoverable className="mycard">
+                    <span className={this.props.todo.status ? "isdone" : "notdone"}>{this.props.todo.content}</span>
+                    <CloseOutlined className="delete" onClick={this.delete}/>
+            </Card>
+            </Col>
         )
     }
 }

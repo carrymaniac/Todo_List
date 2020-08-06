@@ -1,6 +1,6 @@
 import React from "react";
 import {postTodo,getTodo} from '../../api'
-import {Input ,Button,Space} from 'antd'
+import {Input ,Button} from 'antd'
 import './index.css'
 class TodoForm extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class TodoForm extends React.Component {
     onSubmit = () => {
         let req = {content:this.state.text,status:false}
         postTodo(req).then((res)=>{
-            // this.props.addTodo({text:this.state.text,isDone:false});
+            //todo 考虑将这里的get请求换成一次加入到redux操作
             getTodo().then((res) => {
                 this.props.updateTodoList(res.data);
             })

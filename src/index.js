@@ -6,7 +6,7 @@ import {createStore} from 'redux';
 import { Provider } from 'react-redux'
 import {reducer} from './reduces'
 import Router from './router'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 const { Header, Content, Footer } = Layout;
 
 

@@ -5,11 +5,11 @@ export const addTodo = (item) =>({
 })
 export const delTodo = (index) =>({
         type: "DEL_TODO",
-        index: index
+        id: index
 })
 export const updateTodo = (index) =>({
         type: "UPDATE_TODO",
-        index: index
+        id: index
 })
 export const updateTodoList = (itemList) =>({
         type: "UPDATE_TODO_LIST",

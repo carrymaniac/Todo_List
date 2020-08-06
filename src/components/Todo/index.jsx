@@ -1,25 +1,29 @@
 import React from 'react';
 import './todo.css'
-import { getTodo,delTodo,updateTodo} from '../../api'
-import { Card, Space,Col } from 'antd';
+import { delTodo,updateTodo} from '../../api'
+import { Card,Col } from 'antd';
 import {CloseOutlined} from '@ant-design/icons';
 
 
 class Todo extends React.Component {
-    delete = () => {
+    componentWillUpdate(){
+        
+    }
+    delete = (event) => {
         delTodo(this.props.todo.id).then(() => {
-                getTodo().then((res) => {
-                    this.props.updateTodoList(res.data);
-                })
+            //todo 在页面上删除对应的todo
+            console.log("开始删除");
+            this.props.delTodo(this.props.todo.id);
         })
+        event.stopPropagation();
     }
 
     changeDone = () => {
-        let todo = {id:this.props.todo.id,content:this.props.todo.content,status:this.props.todo.status}
+        let todo = {id:this.props.todo.id,content:this.props.todo.content,status:!this.props.todo.status}
         updateTodo(todo).then(()=>{
-            getTodo().then((res) => {
-                this.props.updateTodoList(res.data);
-            })
+            //todo 在页面上更新对应的todo
+            console.log("开始改变状态");
+            this.props.updateTodo(todo.id);
         })
     }
     render(){
